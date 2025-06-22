@@ -1,26 +1,58 @@
+// pages/index.js
 export default function Home() {
+  const products = [
+    {
+      id: 1,
+      name: "Produk A",
+      price: "Rp 50.000",
+      image: "/images/https://files.catbox.moe/sb7pud.jpg",
+    },
+    {
+      id: 2,
+      name: "Produk B",
+      price: "Rp 75.000",
+      image: "/images/https://files.catbox.moe/sb7pud.jpg",
+    },
+  ];
+
   return (
-    <div style={{
-      fontFamily: "Arial, sans-serif",
-      padding: "2rem",
-      maxWidth: "600px",
-      margin: "0 auto"
-    }}>
-      <h1 style={{ color: "#333" }}>TrivexShopOnline</h1>
-      <p style={{ fontSize: "1.2rem" }}>Halo nama saya Yanz</p>
-      <a href="https://t.me/YanzOfficialll" target="_blank" rel="noopener noreferrer"
-         style={{
-           display: "inline-block",
-           marginTop: "1rem",
-           padding: "0.5rem 1rem",
-           backgroundColor: "#0070f3",
-           color: "white",
-           borderRadius: "5px",
-           textDecoration: "none"
-         }}>
-        Hubungi Saya di Telegram
-      </a>
+    <div style={{ padding: "20px", fontFamily: "sans-serif" }}>
+      <h1>Toko Online</h1>
+      <div style={{ display: "flex", gap: "20px", flexWrap: "wrap" }}>
+        {products.map((product) => (
+          <div
+            key={product.id}
+            style={{
+              border: "1px solid #ccc",
+              padding: "10px",
+              width: "200px",
+              borderRadius: "10px",
+              textAlign: "center",
+            }}
+          >
+            <img
+              src={product.image}
+              alt={product.name}
+              style={{ width: "100%", borderRadius: "5px" }}
+            />
+            <h3>{product.name}</h3>
+            <p>{product.price}</p>
+            <button
+              style={{
+                backgroundColor: "#0070f3",
+                color: "white",
+                border: "none",
+                padding: "10px",
+                borderRadius: "5px",
+                cursor: "pointer",
+              }}
+              onClick={() => alert(`Membeli ${product.name}`)}
+            >
+              Beli
+            </button>
+          </div>
+        ))}
+      </div>
     </div>
   );
 }
-
