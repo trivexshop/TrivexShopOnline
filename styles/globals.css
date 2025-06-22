@@ -1,11 +1,4 @@
 body {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-  background-color: #f9f9f9;
-}
-
-body {
   background-image: url('https://files.catbox.moe/sb7pud.jpg');
   background-size: cover;
   background-position: center;
