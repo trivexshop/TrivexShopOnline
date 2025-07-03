@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Trivex Official</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: #0c1220;
+      color: white;
+    }
+    .page { display: none; }
+    .active { display: block; }
+    .login-page {
+      background-image: url('https://files.catbox.moe/hexrom.jpg');
+      background-size: cover;
+      background-position: center;
+      text-align: center;
+      height: 100vh;
+      padding-top: 60px;
+    }
+    .login-box {
+      background: rgba(0,0,0,0.7);
+      padding: 20px;
+      border-radius: 10px;
+      display: inline-block;
+    }
+    input[type="password"], input[type="text"] {
+      padding: 10px;
+      font-size: 16px;
+      width: 200px;
+      border-radius: 5px;
+      border: none;
+      margin-top: 10px;
+      text-align: center;
+    }
+    button {
+      padding: 10px 20px;
+      font-size: 16px;
+      margin-top: 15px;
+      border: none;
+      border-radius: 5px;
+      background: #444;
+      color: white;
+      cursor: pointer;
+    }
+    button:hover { background: #666; }
+    .container {
+      background-color: #10182f;
+      padding: 30px;
+      border-radius: 15px;
+      text-align: center;
+      margin: 40px 20px;
+    }
+    .btn-group {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 15px;
+      justify-content: center;
+    }
+    .btn-group button {
+      background-color: #1c6ef2;
+      border-radius: 8px;
+      font-weight: bold;
+    }
+    .btn-group button:nth-child(2) { background-color: #a28f36; }
+    .btn-group button:nth-child(3) { background-color: #287fae; }
+    .status {
+      font-size: 14px;
+      color: #00ffcc;
+      margin-top: 10px;
+    }
+    .detail-box {
+      background-color: #10182f;
+      padding: 30px;
+      border-radius: 12px;
+      max-width: 90%;
+      text-align: center;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.4);
+      margin: 60px auto;
+    }
+    .detail-box h3 {
+      font-size: 22px;
+      margin-bottom: 15px;
+    }
+    .detail-box p {
+      font-size: 16px;
+      margin-bottom: 20px;
+    }
+    .back-btn {
+      background-color: #f44336;
+      color: white;
+      padding: 12px 24px;
+      font-weight: bold;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+
+<audio autoplay loop>
+  <source src="https://files.catbox.moe/91hrl0.mp3" type="audio/mp3">
+</audio>
+
+<!-- Login Page -->
+<div id="loginPage" class="page login-page active">
+  <h2>TRIVEX OFFICIAL</h2>
+  <p><strong>PW? CONTACT YANZ<br>TELE: @Yanzofficialll</strong>
+  <div class="login-box">
+    <p><strong>MASUKIN PW DULU BANG</strong></p>
+    <input type="password" id="password" placeholder="emang lu tau pw nya?" />
+    <br />
+    <button onclick="checkPassword()">LOGIN</button>
+  </div>
+</div>
+
+<!-- Panel Page -->
+<div id="panelPage" class="page">
+  <div class="container">
+    <h1>Trivex Private</h1>
+    <input type="text" id="targetNumber" placeholder="Masukkan nomor target" />
+    <div class="status" id="alertBox"></div>
+    <div class="btn-group">
+      <button onclick="proceed('halaman1')">Force Beta</button>
+      <button onclick="proceed('halaman2')">Delay Hard</button>
+      <button onclick="proceed('halaman3')">Blank Home</button>
+      <button onclick="proceed('halamanBug')">Freeze</button>
+    </div>
+    <div class="status">Status sender : Connected</div>
+  </div>
+</div>
+
+<!-- Halaman 1 -->
+<div id="halaman1" class="page">
+ <div class="detail-box">
+    <div style="display:flex; justify-content:space-between; align-items:center;">
+      <a href="https://t.me/Yanzofficialll" style="background:#1c6ef2; color:white; padding:6px 12px; border-radius:5px; text-decoration:none">Support</a>
+      <button class="back-btn" onclick="showPage('panelPage')">Logout</button>
+    </div>
+    <h3 style="color:#00ffff; font-size:20px;">OFFICIAL<br><small style="font-size:18px">TrivexX</small></h3>
+    <p><strong>Status:</strong> FORCE BETA</p>
+    <p><strong>Target:</strong> <span class="target-output"></span></p>
+    <p><strong>Info:</strong> Send Bug Sukses &#9989;</p>
+    <p><strong>Waktu:</strong> <span id="timeBlank"></span></p>
+    <p>note : jika masih c2 / tidak ber efek apa apa berarti tidak temmbus/sebagainya</p>
+  </div>
+</div>
+
+<!-- Halaman 2 -->
+<div id="halaman2" class="page">
+ <div class="detail-box">
+    <div style="display:flex; justify-content:space-between; align-items:center;">
+      <a href="https://t.me/Yanzofficialll" style="background:#1c6ef2; color:white; padding:6px 12px; border-radius:5px; text-decoration:none">Support</a>
+      <button class="back-btn" onclick="showPage('panelPage')">Logout</button>
+    </div>
+    <h3 style="color:#00ffff; font-size:20px;">OFFICIAL<br><small style="font-size:18px">TrivexX</small></h3>
+    <p><strong>Status:</strong> DELAY HARD</p>
+    <p><strong>Target:</strong> <span class="target-output"></span></p>
+    <p><strong>Info:</strong> Send Bug Sukses</p>
+    <p><strong>Waktu:</strong> <span id="timeBlank"></span></p>
+    <p>note : jika masih c2 / tidak ber efek apa apa berarti tidak temmbus/sebagainya</p>
+  </div>
+</div>
+
+<!-- Halaman 3 -->
+<div id="halaman3" class="page">
+  <div class="detail-box">
+    <div style="display:flex; justify-content:space-between; align-items:center;">
+      <a href="https://t.me/Yanzofficialll" style="background:#1c6ef2; color:white; padding:6px 12px; border-radius:5px; text-decoration:none">Support</a>
+      <button class="back-btn" onclick="showPage('panelPage')">Logout</button>
+    </div>
+    <h3 style="color:#00ffff; font-size:20px;">OFFICIAL<br><small style="font-size:18px">TrivexX</small></h3>
+    <p><strong>Status:</strong> BUG BLANK HOME</p>
+    <p><strong>Target:</strong> <span class="target-output"></span></p>
+    <p><strong>Info:</strong> Send Bug Sukses</p>
+    <p><strong>Waktu:</strong> <span id="timeBlank"></span></p>
+    <p>note : jika masih c2 / tidak ber efek apa apa berarti tidak temmbus/sebagainya</p>
+  </div>
+</div>
+
+<!-- Halaman Bug -->
+<div id="halamanBug" class="page">
+  <div class="detail-box">
+    <div style="display:flex; justify-content:space-between; align-items:center;">
+      <a href="https://t.me/Yanzofficialll" style="background:#1c6ef2; color:white; padding:6px 12px; border-radius:5px; text-decoration:none">Support</a>
+      <button class="back-btn" onclick="showPage('panelPage')">Logout</button>
+    </div>
+    <h3 style="color:#00ffff; font-size:20px;">OFFICIAL<br><small style="font-size:16px">TrivexX</small></h3>
+    <p><strong>Status:</strong> BUG FREEZE</p>
+    <p><strong>Target:</strong> <span class="target-output"></span></p>
+    <p><strong>Info:</strong> Send Bug Freeze succes</p>
+    <p><strong>Waktu:</strong> <span id="timeBug"></span></p>
+    <p>note : jika masih c2 / tidak ber efek apa apa berarti tidak temmbus/sebagainya</p>
+  </div>
+</div>
+
+<script>
+  function checkPassword() {
+    var pass = document.getElementById('password').value;
+    if (pass === 'yanz') {
+      showPage('panelPage');
+    } else {
+      alert('Password salah!');
+    }
+  }
+
+  function showPage(pageId) {
+    document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+    document.getElementById(pageId).classList.add('active');
+  }
+
+  function getCurrentTime() {
+    const now = new Date();
+    return now.toLocaleString('id-ID', { dateStyle: 'short', timeStyle: 'medium' });
+  }
+
+  function proceed(pageId) {
+    const target = document.getElementById('targetNumber').value;
+    const alertBox = document.getElementById('alertBox');
+    const isNumeric = /^[0-9]+$/.test(target);
+
+    if (!target) {
+      alertBox.textContent = 'Nomor belum diisi';
+      return;
+    } else if (!isNumeric) {
+      alertBox.textContent = 'Hanya boleh angka saja';
+      return;
+    }
+
+    document.querySelectorAll('.target-output').forEach(e => e.textContent = target);
+    document.getElementById('timeBlank').textContent = getCurrentTime();
+    document.getElementById('timeBug').textContent = getCurrentTime();
+    alertBox.textContent = '';
+    showPage(pageId);
+  }
+</script>
+
+</body>
+</html>
